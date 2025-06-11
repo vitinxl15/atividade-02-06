@@ -1,0 +1,25 @@
+{
+  "usuarios": [
+    {
+      "name": "vitor",
+      "email": "vitor@gmail.com",
+      "id": "1",
+      "senha": "123",
+      "cargo": "Adm"
+    },
+    {
+      "name": "roberto",
+      "email": "roberto@gmail.com",
+      "cargo": "supervisor",
+      "id": "8",
+      "senha": "123"
+    },
+    {
+      "name": "jose",
+      "email": "jose@gmail.com",
+      "cargo": "funcionario",
+      "id": "81",
+      "senha": "123"
+    }
+  ]
+}

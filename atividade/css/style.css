@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* Header & Footer */
+header, footer {
+    text-align: center;
+    height: 80px;
+    background-color: #354f52;
+    color: white;
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    z-index: 1000;
+}
+
+header {
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    margin: 140px auto 100px;
+    padding: 30px;
+    background-color: #2f3e46;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Forms */
+form {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #52796f;
+    color: white;
+}
+
+/* Inputs */
+input {
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Buttons */
+button {
+    padding: 10px;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+/* Action Buttons */
+.editar {
+    background-color: #2980b9;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+.editar:hover {
+    background-color: #1f6391;
+}
+
+.excluir {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+.excluir:hover {
+    background-color: #c0392b;
+}
+
+/* Error message */
+.erro {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* User Info Display */
+#usuarioLogado, #nomeLogado {
+    position: absolute;
+    top: 15px;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 0.9em;
+}
+
+#usuarioLogado {
+    right: 15%;
+}
+
+#nomeLogado {
+    right: 5%;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 120px auto 100px;
+        padding: 20px;
+    }
+
+    form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #usuarioLogado,
+    #nomeLogado {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+    }
+}
