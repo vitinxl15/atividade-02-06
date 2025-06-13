@@ -14,12 +14,12 @@ $(document).ready(function () {
             dataType: "json",
             success: function (dado) {
                 if(dado.length > 0){
-                    
                     $("#nomeLogado").text(dado[0].name);
+                    $("#cargo").text(dado[0].cargo);
                     
                          localStorage.setItem("usuarioLogado", JSON.stringify(dado[0]));
                         if(dado[0].cargo == "Adm" ){
-                            window.location.href = "../index.html";
+                            window.location.href = "../adm.html";
                         }else{
                        
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
             }
         });
     })
-    
+  
     $("#formUserCadastro").submit(function (evento) {
         evento.preventDefault();
         const name =$('#name').val();
@@ -44,12 +44,9 @@ $(document).ready(function () {
         if(!name || !email || !senha){
             mensagem("Preencha todos os campos", true);
             return;
-      
         }
 
         const dadosUser = {name, email, senha};
-       
-         
             $.ajax({
                 url: API_URL,
                 method: "POST",
@@ -61,7 +58,6 @@ $(document).ready(function () {
                         window.location.href = "login.html";
                     
                 },
-
                 error: function () {
                     mensagem("Ocorreu um erro ao cadastrar o usuário", true);
                 }

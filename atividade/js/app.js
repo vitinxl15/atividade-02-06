@@ -1,13 +1,16 @@
 $(document).ready(function () {
     const API_URL = "http://localhost:3000/usuarios";
-
     function mensagem(msg, isError = false){
         $("#mensagem").text(msg).toggleClass("erro", isError);
         setTimeout(() => $("#mensagem").text(""), 3000);
     }
      const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+     if(window.location.href.includes("adm.html") && !usuario){
+        window.location.href = "pages/login.html";
+        return;
+    }
       $("#nomeLogado").text(usuario.name);
-
+      $("#cargo").text(usuario.cargo);
     function listarUsuarios(){
         $.ajax({
             url: API_URL,
@@ -46,12 +49,10 @@ $(document).ready(function () {
         if(!name || !email || !cargo){
             mensagem("Preencha todos os campos", true);
             return;
-      
         }
         const dadosUser = {name, email, cargo};
         if(id){
             $.ajax({
-
                 url: `${API_URL}/${id}`,
                 method: "PATCH",
                 contentType: "application/json",
@@ -81,9 +82,7 @@ $(document).ready(function () {
                 error: function () {
                     mensagem("Ocorreu um erro ao cadastrar o usuário", true);
                 }
-                 
             });
-            
         }
     });
     $(document).on('click', '.excluir', function (e) {

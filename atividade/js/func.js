@@ -1,13 +1,7 @@
 $(document).ready(function () {
     const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
-    
-    if (!usuario) {
-        window.location.href = "login.html";
-        return;
-    }
-
-
     $("#nomeLogado").text(usuario.name);
+    $("#cargo").text(usuario.cargo);
     if(usuario.cargo == "funcionario"){
     listarUsuarios();
     
@@ -40,6 +34,7 @@ $(document).ready(function () {
     }
      listarUsuarios();
     }
+   
     if(usuario.cargo == "supervisor"){
     listarUsuariosSup();
     
@@ -61,6 +56,7 @@ $(document).ready(function () {
                         </td>
                     </tr>`;
                 }
+                if(usuario.name != $("#nomeLogado").text()){
                     tabela += `
                     <tr>
                         <td>${usuario.name}</td>
@@ -68,6 +64,7 @@ $(document).ready(function () {
                         
                     </tr>`;
                 
+                }
                 });
                 $("#ListaUsuarios").html(tabela);
             },
@@ -76,6 +73,7 @@ $(document).ready(function () {
             }
         });
     }
+}
      $("#formUser").submit(function (e) {
     e.preventDefault();
 
@@ -102,11 +100,14 @@ $(document).ready(function () {
         }),
         success: function () {
             mensagem("Usuário atualizado com sucesso!", false);
+
+            // Atualiza localStorage se for o próprio usuário
             const usuarioAtual = JSON.parse(localStorage.getItem("usuarioLogado"));
             if (usuarioAtual.id == id) {
                 usuarioAtual.email = email;
                 localStorage.setItem("usuarioLogado", JSON.stringify(usuarioAtual));
             }
+
             listarUsuarios();
         },
         error: function () {
@@ -114,6 +115,7 @@ $(document).ready(function () {
         }
     });
 });
+
     $(document).on('click', '.editar', function () {
         const id = $(this).data("id");
         $.ajax({
@@ -130,5 +132,6 @@ $(document).ready(function () {
             }
         });
     });
-    }
+    
+    
 });
